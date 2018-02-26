@@ -17,9 +17,6 @@ RUN a2enmod rewrite
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php && chmod a+x composer.phar && mv composer.phar /usr/bin/composer
 
-# upgrade npm
-RUN curl -sL https://deb.nodesource.com/setup_5.x | bash - && apt-get install -y nodejs
-
 # configure apache
 RUN usermod -u 1000 www-data
 RUN mkdir -p /var/www/storage/app /var/www/storage/framework /var/www/storage/logs
