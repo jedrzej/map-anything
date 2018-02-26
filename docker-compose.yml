@@ -1,0 +1,21 @@
+web:
+  build: .
+  volumes:
+    - .:/var/www
+    - ./public:/var/www/html
+  links:
+    - mysql
+  ports:
+    - "80:80"
+mysql:
+  image: mysql:5.5
+  user: "1000:50"
+  environment:
+    - MYSQL_USER=user
+    - MYSQL_PASSWORD=password
+    - MYSQL_DATABASE=map
+    - MYSQL_ROOT_PASSWORD=password
+  ports:
+    - "3306:3306"
+  volumes:
+    - ./.data/db:/var/lib/mysql
